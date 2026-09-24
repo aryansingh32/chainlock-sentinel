@@ -1,0 +1,3 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { CommandApp } from '@/components/chainlock-app'
+export const Route=createFileRoute('/distributions/$docId')({head:({params})=>({meta:[{title:`${params.docId} Distribution — ChainLock`},{name:'description',content:'Recipient commitments, package statistics, and document timeline.'},{property:'og:title',content:`${params.docId} Distribution — ChainLock`},{property:'og:description',content:'Recipient commitments, package statistics, and document timeline.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:CommandApp})

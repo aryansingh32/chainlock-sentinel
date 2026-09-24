@@ -10,33 +10,192 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CompareRouteImport } from './routes/compare'
+import { Route as DevicesRouteImport } from './routes/devices'
+import { Route as DistributionsRouteImport } from './routes/distributions'
+import { Route as InboxRouteImport } from './routes/inbox'
+import { Route as LedgerRouteImport } from './routes/ledger'
+import { Route as MeshRouteImport } from './routes/mesh'
+import { Route as SocRouteImport } from './routes/soc'
+import { Route as TraceRouteImport } from './routes/trace'
+import { Route as DistributeNewRouteImport } from './routes/distribute.new'
+import { Route as DistributionsDocIdRouteImport } from './routes/distributions.$docId'
+import { Route as EvidenceCaseIdRouteImport } from './routes/evidence.$caseId'
+import { Route as ViewDocIdRouteImport } from './routes/view.$docId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CompareRoute = CompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevicesRoute = DevicesRouteImport.update({
+  id: '/devices',
+  path: '/devices',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DistributionsRoute = DistributionsRouteImport.update({
+  id: '/distributions',
+  path: '/distributions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InboxRoute = InboxRouteImport.update({
+  id: '/inbox',
+  path: '/inbox',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LedgerRoute = LedgerRouteImport.update({
+  id: '/ledger',
+  path: '/ledger',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeshRoute = MeshRouteImport.update({
+  id: '/mesh',
+  path: '/mesh',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SocRoute = SocRouteImport.update({
+  id: '/soc',
+  path: '/soc',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TraceRoute = TraceRouteImport.update({
+  id: '/trace',
+  path: '/trace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DistributeNewRoute = DistributeNewRouteImport.update({
+  id: '/distribute/new',
+  path: '/distribute/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DistributionsDocIdRoute = DistributionsDocIdRouteImport.update({
+  id: '/$docId',
+  path: '/$docId',
+  getParentRoute: () => DistributionsRoute,
+} as any)
+const EvidenceCaseIdRoute = EvidenceCaseIdRouteImport.update({
+  id: '/evidence/$caseId',
+  path: '/evidence/$caseId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ViewDocIdRoute = ViewDocIdRouteImport.update({
+  id: '/view/$docId',
+  path: '/view/$docId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/compare': typeof CompareRoute
+  '/devices': typeof DevicesRoute
+  '/distributions': typeof DistributionsRouteWithChildren
+  '/inbox': typeof InboxRoute
+  '/ledger': typeof LedgerRoute
+  '/mesh': typeof MeshRoute
+  '/soc': typeof SocRoute
+  '/trace': typeof TraceRoute
+  '/distribute/new': typeof DistributeNewRoute
+  '/distributions/$docId': typeof DistributionsDocIdRoute
+  '/evidence/$caseId': typeof EvidenceCaseIdRoute
+  '/view/$docId': typeof ViewDocIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/compare': typeof CompareRoute
+  '/devices': typeof DevicesRoute
+  '/distributions': typeof DistributionsRouteWithChildren
+  '/inbox': typeof InboxRoute
+  '/ledger': typeof LedgerRoute
+  '/mesh': typeof MeshRoute
+  '/soc': typeof SocRoute
+  '/trace': typeof TraceRoute
+  '/distribute/new': typeof DistributeNewRoute
+  '/distributions/$docId': typeof DistributionsDocIdRoute
+  '/evidence/$caseId': typeof EvidenceCaseIdRoute
+  '/view/$docId': typeof ViewDocIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/compare': typeof CompareRoute
+  '/devices': typeof DevicesRoute
+  '/distributions': typeof DistributionsRouteWithChildren
+  '/inbox': typeof InboxRoute
+  '/ledger': typeof LedgerRoute
+  '/mesh': typeof MeshRoute
+  '/soc': typeof SocRoute
+  '/trace': typeof TraceRoute
+  '/distribute/new': typeof DistributeNewRoute
+  '/distributions/$docId': typeof DistributionsDocIdRoute
+  '/evidence/$caseId': typeof EvidenceCaseIdRoute
+  '/view/$docId': typeof ViewDocIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/compare'
+    | '/devices'
+    | '/distributions'
+    | '/inbox'
+    | '/ledger'
+    | '/mesh'
+    | '/soc'
+    | '/trace'
+    | '/distribute/new'
+    | '/distributions/$docId'
+    | '/evidence/$caseId'
+    | '/view/$docId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/compare'
+    | '/devices'
+    | '/distributions'
+    | '/inbox'
+    | '/ledger'
+    | '/mesh'
+    | '/soc'
+    | '/trace'
+    | '/distribute/new'
+    | '/distributions/$docId'
+    | '/evidence/$caseId'
+    | '/view/$docId'
+  id:
+    | '__root__'
+    | '/'
+    | '/compare'
+    | '/devices'
+    | '/distributions'
+    | '/inbox'
+    | '/ledger'
+    | '/mesh'
+    | '/soc'
+    | '/trace'
+    | '/distribute/new'
+    | '/distributions/$docId'
+    | '/evidence/$caseId'
+    | '/view/$docId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CompareRoute: typeof CompareRoute
+  DevicesRoute: typeof DevicesRoute
+  DistributionsRoute: typeof DistributionsRouteWithChildren
+  InboxRoute: typeof InboxRoute
+  LedgerRoute: typeof LedgerRoute
+  MeshRoute: typeof MeshRoute
+  SocRoute: typeof SocRoute
+  TraceRoute: typeof TraceRoute
+  DistributeNewRoute: typeof DistributeNewRoute
+  EvidenceCaseIdRoute: typeof EvidenceCaseIdRoute
+  ViewDocIdRoute: typeof ViewDocIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +207,118 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/compare': {
+      id: '/compare'
+      path: '/compare'
+      fullPath: '/compare'
+      preLoaderRoute: typeof CompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/devices': {
+      id: '/devices'
+      path: '/devices'
+      fullPath: '/devices'
+      preLoaderRoute: typeof DevicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/distributions': {
+      id: '/distributions'
+      path: '/distributions'
+      fullPath: '/distributions'
+      preLoaderRoute: typeof DistributionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inbox': {
+      id: '/inbox'
+      path: '/inbox'
+      fullPath: '/inbox'
+      preLoaderRoute: typeof InboxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ledger': {
+      id: '/ledger'
+      path: '/ledger'
+      fullPath: '/ledger'
+      preLoaderRoute: typeof LedgerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mesh': {
+      id: '/mesh'
+      path: '/mesh'
+      fullPath: '/mesh'
+      preLoaderRoute: typeof MeshRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/soc': {
+      id: '/soc'
+      path: '/soc'
+      fullPath: '/soc'
+      preLoaderRoute: typeof SocRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trace': {
+      id: '/trace'
+      path: '/trace'
+      fullPath: '/trace'
+      preLoaderRoute: typeof TraceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/distribute/new': {
+      id: '/distribute/new'
+      path: '/distribute/new'
+      fullPath: '/distribute/new'
+      preLoaderRoute: typeof DistributeNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/distributions/$docId': {
+      id: '/distributions/$docId'
+      path: '/$docId'
+      fullPath: '/distributions/$docId'
+      preLoaderRoute: typeof DistributionsDocIdRouteImport
+      parentRoute: typeof DistributionsRoute
+    }
+    '/evidence/$caseId': {
+      id: '/evidence/$caseId'
+      path: '/evidence/$caseId'
+      fullPath: '/evidence/$caseId'
+      preLoaderRoute: typeof EvidenceCaseIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/view/$docId': {
+      id: '/view/$docId'
+      path: '/view/$docId'
+      fullPath: '/view/$docId'
+      preLoaderRoute: typeof ViewDocIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface DistributionsRouteChildren {
+  DistributionsDocIdRoute: typeof DistributionsDocIdRoute
+}
+
+const DistributionsRouteChildren: DistributionsRouteChildren = {
+  DistributionsDocIdRoute: DistributionsDocIdRoute,
+}
+
+const DistributionsRouteWithChildren = DistributionsRoute._addFileChildren(
+  DistributionsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CompareRoute: CompareRoute,
+  DevicesRoute: DevicesRoute,
+  DistributionsRoute: DistributionsRouteWithChildren,
+  InboxRoute: InboxRoute,
+  LedgerRoute: LedgerRoute,
+  MeshRoute: MeshRoute,
+  SocRoute: SocRoute,
+  TraceRoute: TraceRoute,
+  DistributeNewRoute: DistributeNewRoute,
+  EvidenceCaseIdRoute: EvidenceCaseIdRoute,
+  ViewDocIdRoute: ViewDocIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
