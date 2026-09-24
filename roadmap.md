@@ -6,3 +6,4 @@
 - [ ] Build SENTINEL SOC, mesh, and device workflows
 - [ ] Add demo controls, shared mutations, toasts, and route metadata
 - [ ] Validate builds and key flows at desktop and 1280px
+- [ ] Compare implemented UI and workflows against uploaded team handbook; close material gaps
