@@ -1,3 +1,0 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { CommandApp } from '@/components/chainlock-app'
-export const Route=createFileRoute('/view/$docId')({head:({params})=>({meta:[{title:`${params.docId} Controlled Viewer — ChainLock`},{name:'description',content:'Memory-only controlled document access sequence.'},{property:'og:title',content:`${params.docId} Controlled Viewer — ChainLock`},{property:'og:description',content:'Memory-only controlled document access sequence.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:CommandApp})

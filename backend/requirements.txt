@@ -1,0 +1,6 @@
+fastapi>=0.110
+uvicorn>=0.29
+cryptography>=42
+dilithium-py>=1.4
+kyber-py>=1.2
+slh-dsa>=0.2.5
