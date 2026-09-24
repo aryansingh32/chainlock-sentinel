@@ -19,6 +19,7 @@ import { Route as MeshRouteImport } from './routes/mesh'
 import { Route as SocRouteImport } from './routes/soc'
 import { Route as TraceRouteImport } from './routes/trace'
 import { Route as DistributeNewRouteImport } from './routes/distribute.new'
+import { Route as DistributionsDocIdRouteImport } from './routes/distributions.$docId'
 import { Route as EvidenceCaseIdRouteImport } from './routes/evidence.$caseId'
 import { Route as ViewDocIdRouteImport } from './routes/view.$docId'
 
@@ -72,6 +73,11 @@ const DistributeNewRoute = DistributeNewRouteImport.update({
   path: '/distribute/new',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DistributionsDocIdRoute = DistributionsDocIdRouteImport.update({
+  id: '/$docId',
+  path: '/$docId',
+  getParentRoute: () => DistributionsRoute,
+} as any)
 const EvidenceCaseIdRoute = EvidenceCaseIdRouteImport.update({
   id: '/evidence/$caseId',
   path: '/evidence/$caseId',
@@ -87,13 +93,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/compare': typeof CompareRoute
   '/devices': typeof DevicesRoute
-  '/distributions': typeof DistributionsRoute
+  '/distributions': typeof DistributionsRouteWithChildren
   '/inbox': typeof InboxRoute
   '/ledger': typeof LedgerRoute
   '/mesh': typeof MeshRoute
   '/soc': typeof SocRoute
   '/trace': typeof TraceRoute
   '/distribute/new': typeof DistributeNewRoute
+  '/distributions/$docId': typeof DistributionsDocIdRoute
   '/evidence/$caseId': typeof EvidenceCaseIdRoute
   '/view/$docId': typeof ViewDocIdRoute
 }
@@ -101,13 +108,14 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/compare': typeof CompareRoute
   '/devices': typeof DevicesRoute
-  '/distributions': typeof DistributionsRoute
+  '/distributions': typeof DistributionsRouteWithChildren
   '/inbox': typeof InboxRoute
   '/ledger': typeof LedgerRoute
   '/mesh': typeof MeshRoute
   '/soc': typeof SocRoute
   '/trace': typeof TraceRoute
   '/distribute/new': typeof DistributeNewRoute
+  '/distributions/$docId': typeof DistributionsDocIdRoute
   '/evidence/$caseId': typeof EvidenceCaseIdRoute
   '/view/$docId': typeof ViewDocIdRoute
 }
@@ -116,13 +124,14 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/compare': typeof CompareRoute
   '/devices': typeof DevicesRoute
-  '/distributions': typeof DistributionsRoute
+  '/distributions': typeof DistributionsRouteWithChildren
   '/inbox': typeof InboxRoute
   '/ledger': typeof LedgerRoute
   '/mesh': typeof MeshRoute
   '/soc': typeof SocRoute
   '/trace': typeof TraceRoute
   '/distribute/new': typeof DistributeNewRoute
+  '/distributions/$docId': typeof DistributionsDocIdRoute
   '/evidence/$caseId': typeof EvidenceCaseIdRoute
   '/view/$docId': typeof ViewDocIdRoute
 }
@@ -139,6 +148,7 @@ export interface FileRouteTypes {
     | '/soc'
     | '/trace'
     | '/distribute/new'
+    | '/distributions/$docId'
     | '/evidence/$caseId'
     | '/view/$docId'
   fileRoutesByTo: FileRoutesByTo
@@ -153,6 +163,7 @@ export interface FileRouteTypes {
     | '/soc'
     | '/trace'
     | '/distribute/new'
+    | '/distributions/$docId'
     | '/evidence/$caseId'
     | '/view/$docId'
   id:
@@ -167,6 +178,7 @@ export interface FileRouteTypes {
     | '/soc'
     | '/trace'
     | '/distribute/new'
+    | '/distributions/$docId'
     | '/evidence/$caseId'
     | '/view/$docId'
   fileRoutesById: FileRoutesById
@@ -175,7 +187,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CompareRoute: typeof CompareRoute
   DevicesRoute: typeof DevicesRoute
-  DistributionsRoute: typeof DistributionsRoute
+  DistributionsRoute: typeof DistributionsRouteWithChildren
   InboxRoute: typeof InboxRoute
   LedgerRoute: typeof LedgerRoute
   MeshRoute: typeof MeshRoute
@@ -258,6 +270,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DistributeNewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/distributions/$docId': {
+      id: '/distributions/$docId'
+      path: '/$docId'
+      fullPath: '/distributions/$docId'
+      preLoaderRoute: typeof DistributionsDocIdRouteImport
+      parentRoute: typeof DistributionsRoute
+    }
     '/evidence/$caseId': {
       id: '/evidence/$caseId'
       path: '/evidence/$caseId'
@@ -275,11 +294,23 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface DistributionsRouteChildren {
+  DistributionsDocIdRoute: typeof DistributionsDocIdRoute
+}
+
+const DistributionsRouteChildren: DistributionsRouteChildren = {
+  DistributionsDocIdRoute: DistributionsDocIdRoute,
+}
+
+const DistributionsRouteWithChildren = DistributionsRoute._addFileChildren(
+  DistributionsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CompareRoute: CompareRoute,
   DevicesRoute: DevicesRoute,
-  DistributionsRoute: DistributionsRoute,
+  DistributionsRoute: DistributionsRouteWithChildren,
   InboxRoute: InboxRoute,
   LedgerRoute: LedgerRoute,
   MeshRoute: MeshRoute,
