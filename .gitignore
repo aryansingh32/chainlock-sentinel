@@ -35,3 +35,8 @@ dist-ssr
 backend/.keystore/
 __pycache__/
 *.pyc
+
+# start.sh / start.ps1 downloads
+.tools/
+backend/.venv/
+package-lock.json

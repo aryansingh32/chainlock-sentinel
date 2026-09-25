@@ -1,0 +1,4 @@
+# Launchers: keep native line endings per OS
+*.sh text eol=lf
+*.ps1 text eol=crlf
+*.bat text eol=crlf

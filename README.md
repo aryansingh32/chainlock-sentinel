@@ -8,7 +8,25 @@ Smart India Hackathon 2026 · Ministry of Defence · Indian Navy (WESEE) · Soft
 This is a working web prototype of the design in the team handbook: a React console for every role (Officer, HQ Sender,
 Investigator, SENTINEL SOC) plus a small Python **Crypto Core** service that does the real post-quantum cryptography.
 
-## Run it
+## Quick start — one command, any OS
+
+Installs everything it needs (portable Node.js if missing, npm packages, Python Crypto Core), starts the backend and the
+web app, and opens the browser. Nothing else to set up.
+
+**Windows** (PowerShell):
+```powershell
+powershell -ExecutionPolicy Bypass -c "irm https://raw.githubusercontent.com/aryansingh32/chainlock-sentinel/main/start.ps1 | iex"
+```
+**Linux / macOS**:
+```sh
+curl -fsSL https://raw.githubusercontent.com/aryansingh32/chainlock-sentinel/main/start.sh | bash
+```
+Already cloned? Double-click `start.bat` (Windows) or run `./start.sh`. The app opens at http://localhost:5173 and
+Ctrl+C stops everything. Python 3.10+ enables real post-quantum crypto; without it the app still runs with simulated
+signatures (on Windows the script tries to install Python with winget). Options: `WEB_PORT`, `API_PORT`, `NO_BACKEND=1`,
+`NO_BROWSER=1`.
+
+## Run it manually
 
 ```sh
 # 1. Web app (works on its own — "SIMULATED" signatures)
