@@ -8,7 +8,6 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
-import { Toaster } from "@/components/ui/sonner";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -79,13 +78,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "ChainLock + SENTINEL" },
-      { name: "description", content: "Offline secure document distribution and forensic command system." },
+      {
+        name: "description",
+        content:
+          "Cryptographic attribution and immutable decryption provenance for multi-recipient encrypted documents (SIH26237).",
+      },
       { name: "author", content: "ChainLock" },
       { property: "og:title", content: "ChainLock + SENTINEL" },
-      { property: "og:description", content: "Offline secure document distribution and forensic command system." },
+      {
+        property: "og:description",
+        content: "Offline secure document distribution and forensic command system.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      
     ],
     links: [
       {
@@ -93,6 +98,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -109,7 +119,6 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
       <body>
         {children}
-        <Toaster richColors position="top-right" />
         <Scripts />
       </body>
     </html>

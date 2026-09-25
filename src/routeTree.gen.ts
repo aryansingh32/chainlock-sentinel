@@ -10,138 +10,153 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as CompareRouteImport } from './routes/compare'
-import { Route as DevicesRouteImport } from './routes/devices'
-import { Route as DistributionsRouteImport } from './routes/distributions'
-import { Route as InboxRouteImport } from './routes/inbox'
-import { Route as LedgerRouteImport } from './routes/ledger'
-import { Route as MeshRouteImport } from './routes/mesh'
-import { Route as SocRouteImport } from './routes/soc'
-import { Route as TraceRouteImport } from './routes/trace'
-import { Route as DistributeNewRouteImport } from './routes/distribute.new'
-import { Route as DistributionsDocIdRouteImport } from './routes/distributions.$docId'
-import { Route as EvidenceCaseIdRouteImport } from './routes/evidence.$caseId'
-import { Route as ViewDocIdRouteImport } from './routes/view.$docId'
+import { Route as AppRouteImport } from './routes/_app'
+import { Route as AppBriefingRouteImport } from './routes/_app.briefing'
+import { Route as AppCompareRouteImport } from './routes/_app.compare'
+import { Route as AppDevicesRouteImport } from './routes/_app.devices'
+import { Route as AppInboxRouteImport } from './routes/_app.inbox'
+import { Route as AppLedgerRouteImport } from './routes/_app.ledger'
+import { Route as AppMeshRouteImport } from './routes/_app.mesh'
+import { Route as AppSocRouteImport } from './routes/_app.soc'
+import { Route as AppTraceRouteImport } from './routes/_app.trace'
+import { Route as AppDistributeNewRouteImport } from './routes/_app.distribute.new'
+import { Route as AppDistributionsIndexRouteImport } from './routes/_app.distributions.index'
+import { Route as AppDistributionsDocIdRouteImport } from './routes/_app.distributions.$docId'
+import { Route as AppEvidenceCaseIdRouteImport } from './routes/_app.evidence.$caseId'
+import { Route as AppViewDocIdRouteImport } from './routes/_app.view.$docId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CompareRoute = CompareRouteImport.update({
+const AppRoute = AppRouteImport.update({
+  id: '/_app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppBriefingRoute = AppBriefingRouteImport.update({
+  id: '/briefing',
+  path: '/briefing',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCompareRoute = AppCompareRouteImport.update({
   id: '/compare',
   path: '/compare',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
-const DevicesRoute = DevicesRouteImport.update({
+const AppDevicesRoute = AppDevicesRouteImport.update({
   id: '/devices',
   path: '/devices',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
-const DistributionsRoute = DistributionsRouteImport.update({
-  id: '/distributions',
-  path: '/distributions',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const InboxRoute = InboxRouteImport.update({
+const AppInboxRoute = AppInboxRouteImport.update({
   id: '/inbox',
   path: '/inbox',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
-const LedgerRoute = LedgerRouteImport.update({
+const AppLedgerRoute = AppLedgerRouteImport.update({
   id: '/ledger',
   path: '/ledger',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
-const MeshRoute = MeshRouteImport.update({
+const AppMeshRoute = AppMeshRouteImport.update({
   id: '/mesh',
   path: '/mesh',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
-const SocRoute = SocRouteImport.update({
+const AppSocRoute = AppSocRouteImport.update({
   id: '/soc',
   path: '/soc',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
-const TraceRoute = TraceRouteImport.update({
+const AppTraceRoute = AppTraceRouteImport.update({
   id: '/trace',
   path: '/trace',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
-const DistributeNewRoute = DistributeNewRouteImport.update({
+const AppDistributeNewRoute = AppDistributeNewRouteImport.update({
   id: '/distribute/new',
   path: '/distribute/new',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
-const DistributionsDocIdRoute = DistributionsDocIdRouteImport.update({
-  id: '/$docId',
-  path: '/$docId',
-  getParentRoute: () => DistributionsRoute,
+const AppDistributionsIndexRoute = AppDistributionsIndexRouteImport.update({
+  id: '/distributions/',
+  path: '/distributions/',
+  getParentRoute: () => AppRoute,
 } as any)
-const EvidenceCaseIdRoute = EvidenceCaseIdRouteImport.update({
+const AppDistributionsDocIdRoute = AppDistributionsDocIdRouteImport.update({
+  id: '/distributions/$docId',
+  path: '/distributions/$docId',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppEvidenceCaseIdRoute = AppEvidenceCaseIdRouteImport.update({
   id: '/evidence/$caseId',
   path: '/evidence/$caseId',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
-const ViewDocIdRoute = ViewDocIdRouteImport.update({
+const AppViewDocIdRoute = AppViewDocIdRouteImport.update({
   id: '/view/$docId',
   path: '/view/$docId',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AppRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/compare': typeof CompareRoute
-  '/devices': typeof DevicesRoute
-  '/distributions': typeof DistributionsRouteWithChildren
-  '/inbox': typeof InboxRoute
-  '/ledger': typeof LedgerRoute
-  '/mesh': typeof MeshRoute
-  '/soc': typeof SocRoute
-  '/trace': typeof TraceRoute
-  '/distribute/new': typeof DistributeNewRoute
-  '/distributions/$docId': typeof DistributionsDocIdRoute
-  '/evidence/$caseId': typeof EvidenceCaseIdRoute
-  '/view/$docId': typeof ViewDocIdRoute
+  '/briefing': typeof AppBriefingRoute
+  '/compare': typeof AppCompareRoute
+  '/devices': typeof AppDevicesRoute
+  '/inbox': typeof AppInboxRoute
+  '/ledger': typeof AppLedgerRoute
+  '/mesh': typeof AppMeshRoute
+  '/soc': typeof AppSocRoute
+  '/trace': typeof AppTraceRoute
+  '/distribute/new': typeof AppDistributeNewRoute
+  '/distributions/$docId': typeof AppDistributionsDocIdRoute
+  '/evidence/$caseId': typeof AppEvidenceCaseIdRoute
+  '/view/$docId': typeof AppViewDocIdRoute
+  '/distributions/': typeof AppDistributionsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/compare': typeof CompareRoute
-  '/devices': typeof DevicesRoute
-  '/distributions': typeof DistributionsRouteWithChildren
-  '/inbox': typeof InboxRoute
-  '/ledger': typeof LedgerRoute
-  '/mesh': typeof MeshRoute
-  '/soc': typeof SocRoute
-  '/trace': typeof TraceRoute
-  '/distribute/new': typeof DistributeNewRoute
-  '/distributions/$docId': typeof DistributionsDocIdRoute
-  '/evidence/$caseId': typeof EvidenceCaseIdRoute
-  '/view/$docId': typeof ViewDocIdRoute
+  '/briefing': typeof AppBriefingRoute
+  '/compare': typeof AppCompareRoute
+  '/devices': typeof AppDevicesRoute
+  '/inbox': typeof AppInboxRoute
+  '/ledger': typeof AppLedgerRoute
+  '/mesh': typeof AppMeshRoute
+  '/soc': typeof AppSocRoute
+  '/trace': typeof AppTraceRoute
+  '/distribute/new': typeof AppDistributeNewRoute
+  '/distributions/$docId': typeof AppDistributionsDocIdRoute
+  '/evidence/$caseId': typeof AppEvidenceCaseIdRoute
+  '/view/$docId': typeof AppViewDocIdRoute
+  '/distributions': typeof AppDistributionsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/compare': typeof CompareRoute
-  '/devices': typeof DevicesRoute
-  '/distributions': typeof DistributionsRouteWithChildren
-  '/inbox': typeof InboxRoute
-  '/ledger': typeof LedgerRoute
-  '/mesh': typeof MeshRoute
-  '/soc': typeof SocRoute
-  '/trace': typeof TraceRoute
-  '/distribute/new': typeof DistributeNewRoute
-  '/distributions/$docId': typeof DistributionsDocIdRoute
-  '/evidence/$caseId': typeof EvidenceCaseIdRoute
-  '/view/$docId': typeof ViewDocIdRoute
+  '/_app': typeof AppRouteWithChildren
+  '/_app/briefing': typeof AppBriefingRoute
+  '/_app/compare': typeof AppCompareRoute
+  '/_app/devices': typeof AppDevicesRoute
+  '/_app/inbox': typeof AppInboxRoute
+  '/_app/ledger': typeof AppLedgerRoute
+  '/_app/mesh': typeof AppMeshRoute
+  '/_app/soc': typeof AppSocRoute
+  '/_app/trace': typeof AppTraceRoute
+  '/_app/distribute/new': typeof AppDistributeNewRoute
+  '/_app/distributions/$docId': typeof AppDistributionsDocIdRoute
+  '/_app/evidence/$caseId': typeof AppEvidenceCaseIdRoute
+  '/_app/view/$docId': typeof AppViewDocIdRoute
+  '/_app/distributions/': typeof AppDistributionsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/briefing'
     | '/compare'
     | '/devices'
-    | '/distributions'
     | '/inbox'
     | '/ledger'
     | '/mesh'
@@ -151,12 +166,13 @@ export interface FileRouteTypes {
     | '/distributions/$docId'
     | '/evidence/$caseId'
     | '/view/$docId'
+    | '/distributions/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/briefing'
     | '/compare'
     | '/devices'
-    | '/distributions'
     | '/inbox'
     | '/ledger'
     | '/mesh'
@@ -166,36 +182,29 @@ export interface FileRouteTypes {
     | '/distributions/$docId'
     | '/evidence/$caseId'
     | '/view/$docId'
+    | '/distributions'
   id:
     | '__root__'
     | '/'
-    | '/compare'
-    | '/devices'
-    | '/distributions'
-    | '/inbox'
-    | '/ledger'
-    | '/mesh'
-    | '/soc'
-    | '/trace'
-    | '/distribute/new'
-    | '/distributions/$docId'
-    | '/evidence/$caseId'
-    | '/view/$docId'
+    | '/_app'
+    | '/_app/briefing'
+    | '/_app/compare'
+    | '/_app/devices'
+    | '/_app/inbox'
+    | '/_app/ledger'
+    | '/_app/mesh'
+    | '/_app/soc'
+    | '/_app/trace'
+    | '/_app/distribute/new'
+    | '/_app/distributions/$docId'
+    | '/_app/evidence/$caseId'
+    | '/_app/view/$docId'
+    | '/_app/distributions/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CompareRoute: typeof CompareRoute
-  DevicesRoute: typeof DevicesRoute
-  DistributionsRoute: typeof DistributionsRouteWithChildren
-  InboxRoute: typeof InboxRoute
-  LedgerRoute: typeof LedgerRoute
-  MeshRoute: typeof MeshRoute
-  SocRoute: typeof SocRoute
-  TraceRoute: typeof TraceRoute
-  DistributeNewRoute: typeof DistributeNewRoute
-  EvidenceCaseIdRoute: typeof EvidenceCaseIdRoute
-  ViewDocIdRoute: typeof ViewDocIdRoute
+  AppRoute: typeof AppRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -207,118 +216,144 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/compare': {
-      id: '/compare'
+    '/_app': {
+      id: '/_app'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_app/briefing': {
+      id: '/_app/briefing'
+      path: '/briefing'
+      fullPath: '/briefing'
+      preLoaderRoute: typeof AppBriefingRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/compare': {
+      id: '/_app/compare'
       path: '/compare'
       fullPath: '/compare'
-      preLoaderRoute: typeof CompareRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AppCompareRouteImport
+      parentRoute: typeof AppRoute
     }
-    '/devices': {
-      id: '/devices'
+    '/_app/devices': {
+      id: '/_app/devices'
       path: '/devices'
       fullPath: '/devices'
-      preLoaderRoute: typeof DevicesRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AppDevicesRouteImport
+      parentRoute: typeof AppRoute
     }
-    '/distributions': {
-      id: '/distributions'
-      path: '/distributions'
-      fullPath: '/distributions'
-      preLoaderRoute: typeof DistributionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/inbox': {
-      id: '/inbox'
+    '/_app/inbox': {
+      id: '/_app/inbox'
       path: '/inbox'
       fullPath: '/inbox'
-      preLoaderRoute: typeof InboxRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AppInboxRouteImport
+      parentRoute: typeof AppRoute
     }
-    '/ledger': {
-      id: '/ledger'
+    '/_app/ledger': {
+      id: '/_app/ledger'
       path: '/ledger'
       fullPath: '/ledger'
-      preLoaderRoute: typeof LedgerRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AppLedgerRouteImport
+      parentRoute: typeof AppRoute
     }
-    '/mesh': {
-      id: '/mesh'
+    '/_app/mesh': {
+      id: '/_app/mesh'
       path: '/mesh'
       fullPath: '/mesh'
-      preLoaderRoute: typeof MeshRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AppMeshRouteImport
+      parentRoute: typeof AppRoute
     }
-    '/soc': {
-      id: '/soc'
+    '/_app/soc': {
+      id: '/_app/soc'
       path: '/soc'
       fullPath: '/soc'
-      preLoaderRoute: typeof SocRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AppSocRouteImport
+      parentRoute: typeof AppRoute
     }
-    '/trace': {
-      id: '/trace'
+    '/_app/trace': {
+      id: '/_app/trace'
       path: '/trace'
       fullPath: '/trace'
-      preLoaderRoute: typeof TraceRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AppTraceRouteImport
+      parentRoute: typeof AppRoute
     }
-    '/distribute/new': {
-      id: '/distribute/new'
+    '/_app/distribute/new': {
+      id: '/_app/distribute/new'
       path: '/distribute/new'
       fullPath: '/distribute/new'
-      preLoaderRoute: typeof DistributeNewRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AppDistributeNewRouteImport
+      parentRoute: typeof AppRoute
     }
-    '/distributions/$docId': {
-      id: '/distributions/$docId'
-      path: '/$docId'
+    '/_app/distributions/': {
+      id: '/_app/distributions/'
+      path: '/distributions'
+      fullPath: '/distributions/'
+      preLoaderRoute: typeof AppDistributionsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/distributions/$docId': {
+      id: '/_app/distributions/$docId'
+      path: '/distributions/$docId'
       fullPath: '/distributions/$docId'
-      preLoaderRoute: typeof DistributionsDocIdRouteImport
-      parentRoute: typeof DistributionsRoute
+      preLoaderRoute: typeof AppDistributionsDocIdRouteImport
+      parentRoute: typeof AppRoute
     }
-    '/evidence/$caseId': {
-      id: '/evidence/$caseId'
+    '/_app/evidence/$caseId': {
+      id: '/_app/evidence/$caseId'
       path: '/evidence/$caseId'
       fullPath: '/evidence/$caseId'
-      preLoaderRoute: typeof EvidenceCaseIdRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AppEvidenceCaseIdRouteImport
+      parentRoute: typeof AppRoute
     }
-    '/view/$docId': {
-      id: '/view/$docId'
+    '/_app/view/$docId': {
+      id: '/_app/view/$docId'
       path: '/view/$docId'
       fullPath: '/view/$docId'
-      preLoaderRoute: typeof ViewDocIdRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AppViewDocIdRouteImport
+      parentRoute: typeof AppRoute
     }
   }
 }
 
-interface DistributionsRouteChildren {
-  DistributionsDocIdRoute: typeof DistributionsDocIdRoute
+interface AppRouteChildren {
+  AppBriefingRoute: typeof AppBriefingRoute
+  AppCompareRoute: typeof AppCompareRoute
+  AppDevicesRoute: typeof AppDevicesRoute
+  AppInboxRoute: typeof AppInboxRoute
+  AppLedgerRoute: typeof AppLedgerRoute
+  AppMeshRoute: typeof AppMeshRoute
+  AppSocRoute: typeof AppSocRoute
+  AppTraceRoute: typeof AppTraceRoute
+  AppDistributeNewRoute: typeof AppDistributeNewRoute
+  AppDistributionsDocIdRoute: typeof AppDistributionsDocIdRoute
+  AppEvidenceCaseIdRoute: typeof AppEvidenceCaseIdRoute
+  AppViewDocIdRoute: typeof AppViewDocIdRoute
+  AppDistributionsIndexRoute: typeof AppDistributionsIndexRoute
 }
 
-const DistributionsRouteChildren: DistributionsRouteChildren = {
-  DistributionsDocIdRoute: DistributionsDocIdRoute,
+const AppRouteChildren: AppRouteChildren = {
+  AppBriefingRoute: AppBriefingRoute,
+  AppCompareRoute: AppCompareRoute,
+  AppDevicesRoute: AppDevicesRoute,
+  AppInboxRoute: AppInboxRoute,
+  AppLedgerRoute: AppLedgerRoute,
+  AppMeshRoute: AppMeshRoute,
+  AppSocRoute: AppSocRoute,
+  AppTraceRoute: AppTraceRoute,
+  AppDistributeNewRoute: AppDistributeNewRoute,
+  AppDistributionsDocIdRoute: AppDistributionsDocIdRoute,
+  AppEvidenceCaseIdRoute: AppEvidenceCaseIdRoute,
+  AppViewDocIdRoute: AppViewDocIdRoute,
+  AppDistributionsIndexRoute: AppDistributionsIndexRoute,
 }
 
-const DistributionsRouteWithChildren = DistributionsRoute._addFileChildren(
-  DistributionsRouteChildren,
-)
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CompareRoute: CompareRoute,
-  DevicesRoute: DevicesRoute,
-  DistributionsRoute: DistributionsRouteWithChildren,
-  InboxRoute: InboxRoute,
-  LedgerRoute: LedgerRoute,
-  MeshRoute: MeshRoute,
-  SocRoute: SocRoute,
-  TraceRoute: TraceRoute,
-  DistributeNewRoute: DistributeNewRoute,
-  EvidenceCaseIdRoute: EvidenceCaseIdRoute,
-  ViewDocIdRoute: ViewDocIdRoute,
+  AppRoute: AppRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
